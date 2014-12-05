@@ -1,0 +1,26 @@
+<h1>Angular Reading List for FalloutX(Andy)</h1>
+<div class="row" ng-controller="ReadingListController as readingListCtrl">
+  <button class="btn btn-default">Create Review</button>
+
+  <hr/>
+  <hr/>
+
+  <ul class="list-unstyled col-sm-8">
+    <li class="book row" ng-repeat="book in readingListCtrl.books">
+      <book-cover> </book-cover>
+      <div class="col-sm-9">
+        <h3><a href="http://www.amazon.com/Game-Thrones-Song-Fire-Book/dp/{{book.isbn}}">{{book.title}}</a></h3>
+
+        <cite class="text-muted">Written By {{book.author}}</cite>
+
+        <p>{{book.review}}</p>
+<!-- put book genre here -->
+
+        <book-genre></book-genre>
+      </div>
+
+    </li>
+
+
+  </ul>
+</div>
