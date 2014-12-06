@@ -7,6 +7,12 @@
   app.controller('ReadingListController', function(){
     this.books = books;
     this.genres = genres;
+    this.deleteBook = function(book){
+      var index = this.books.indexOf(book);
+      if(index > -1){
+        this.books.splice(index, 1);
+      }
+    };
   });
 
   app.directive('bookGenre', function(){
@@ -36,6 +42,13 @@
       controller: function(){
         this.showForm = false;
         this.book = {genres: {}};
+
+        this.addReview = function(form){
+          books.push(this.book);
+          this.book = {genres: {}};
+
+          form.$setPristine();
+        };
       },
       controllerAs:'reviewFormCtrl',
       scope: {
