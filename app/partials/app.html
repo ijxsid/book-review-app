@@ -1,8 +1,9 @@
 <h1>Angular Reading List for FalloutX(Andy)</h1>
 <div class="row" ng-controller="ReadingListController as readingListCtrl">
-  <button class="btn btn-default">Create Review</button>
+  <button class="btn btn-default" ng-click="reviewFormCtrl.showForm = !reviewFormCtrl.showForm;" >{{reviewFormCtrl.showForm ?"Cancel":"Create Review"}}</button>
 
   <hr/>
+    <review-form books="readingListCtrl.books" genres="readingListCtrl.genres" ng-show="reviewFormCtrl.showForm"></review-form>
   <hr/>
 
   <ul class="list-unstyled col-sm-8">
@@ -14,9 +15,8 @@
         <cite class="text-muted">Written By {{book.author}}</cite>
 
         <p>{{book.review}}</p>
-<!-- put book genre here -->
 
-        <book-genre></book-genre>
+        <book-genre genres="book.genres"></book-genre>
       </div>
 
     </li>

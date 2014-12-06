@@ -12,7 +12,10 @@
   app.directive('bookGenre', function(){
     return {
       restrict: 'E',
-      templateUrl: 'partials/book-genre.html'
+      templateUrl: 'partials/book-genre.html',
+      scope: {
+        genres: '='
+      }
     };
   });
 
@@ -20,13 +23,27 @@
     return {
       restrict: 'E',
       templateUrl: 'partials/book-cover.html',
-      replace: true
-
+      replace: true,
     };
-
   });
 /*replace: true replaces entire code from book-cover to app.html without making a new book-cover block element */
-
+/* using replace: true is kinda good call */
+  app.directive('reviewForm', function(){
+    return {
+      restrict: 'E',
+      templateUrl: 'partials/review-form.html',
+      replace: true,
+      controller: function(){
+        this.showForm = false;
+        this.book = {genres: {}};
+      },
+      controllerAs:'reviewFormCtrl',
+      scope: {
+        books: '=',
+        genres: '='
+      }
+    };
+  });
 
   // Data
   var genres = [ 'fable', 'fantasy', 'fiction', 'folklore', 'horror', 'humor', 'legend', 'metafiction', 'mystery', 'mythology', 'non-fiction', 'poetry' ];
